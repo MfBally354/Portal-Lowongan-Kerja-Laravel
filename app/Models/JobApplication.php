@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class JobApplication extends Model
 {
     protected $fillable = [
-        'job_id',
+        'job_listing_id', // ← FIX INI (ganti job_id)
         'user_id',
         'cover_letter',
         'resume',
@@ -16,7 +16,7 @@ class JobApplication extends Model
 
     public function job()
     {
-        return $this->belongsTo(Job::class);
+        return $this->belongsTo(JobListing::class, 'job_listing_id'); // ← FIX INI
     }
 
     public function user()
